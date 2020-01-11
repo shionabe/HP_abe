@@ -1,0 +1,21 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+.slider{
+    margin: 100px auto;
+    width: 50%;
+    /* margin-left: 20%; */
+}
+.slider img{
+	height: auto;
+	width: 100%;
+  padding-left: 30px;
+  /* margin-left: 20%; */
+}
+/*slick setting*/
+.slick-prev:before,
+.slick-next:before{
+    color: #000;
+}

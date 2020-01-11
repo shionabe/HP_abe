@@ -1,0 +1,575 @@
+
+/* ボディ全体 */
+
+body{
+  padding:0;
+  margin:0;
+  background-color: #fbf2d9;
+  text-align: center;
+  margin-right: auto;
+  margin-right: auto;
+
+}
+
+
+ul{
+  list-style: none;
+  /* display: inline-block; */
+
+}
+
+li{
+  display: inline;
+}
+
+h1{
+  font-family: dazzle-unicase, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  margin-bottom: 0;
+  font-size: 2em;
+}
+
+h2{
+  font-family: dazzle-unicase, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  margin-bottom: 0;
+  font-size: 1.5em;
+}
+
+.icon{
+  color: #f2d16a;
+}
+
+#cyuu{
+  color: #a6a6a6;
+}
+
+.attention{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  /* border: solid 1px #f2d16a; */
+  background-color:#fff7f3;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: left;
+}
+
+/* 続きを読む */
+
+.readmore{
+    position: relative;
+    box-sizing: border-box;
+    /*以下お好み*/
+    /* ボーダーを付ける場合 */
+    padding: 10px;
+    /* border: 1px solid #CCC; */
+}
+
+.readmore-content{
+    position: relative;
+    overflow: hidden;
+    /*以下お好み*/
+    /*高さの初期値*/
+    height: 40px;
+}
+.readmore-content::before {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    content: "";
+    /*以下お好み グラデーションの色と高さ 高さはreadmoreのheight以下にすること*/
+    height: 50px;
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.8) 50%, #fff 100%);
+    background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.8) 50%, #fff 100%);
+}
+
+/* 続きを読むボタン */
+.readmore-label{
+    display: table;
+    bottom: 5px;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    margin: 0 auto;
+    z-index: 3;
+    padding: 0 10px;
+    background-color: #f2d16a;
+    border-radius: 10px;
+    color: #FFF;
+}
+.readmore-label:before{
+    content: '続きを読む';
+}
+
+.readmore-check{
+    display: none;
+}
+/*チェック時にボタンを非表示*/
+.readmore-check:checked ~ .readmore-label{
+    position: static;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    /* 「続きを読む」を押した後、元に戻す必要がない場合は、上のオプションを消してこの1行だけにする */
+    /* display: none; */
+}
+.readmore-check:checked ~ .readmore-label:before{
+    content: '閉じる';
+}
+/*チェック時に高さを自動に戻す*/
+.readmore-check:checked ~ .readmore-content{
+    height: auto;
+}
+/*チェック時グラデーション等を削除*/
+.readmore-check:checked ~ .readmore-content::before {
+    display: none;
+}
+
+
+
+/* ヘッダー */
+
+header{
+  width: 100%;
+  top:0;
+  height: auto;
+  position:fixed;
+  background-color:#ffd372;
+  opacity:0.5;
+  /* z-index: 1; */
+  font-size: 0.8em;
+}
+
+main{
+  margin: 0.5% 10%;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 50px;
+}
+
+p{
+  font-size: 0.7em;
+
+}
+
+.top_wrapper{
+  margin: 5% 10%;
+  background-color: #fff;
+}
+
+.main_wrapper{
+  display: inline-block;
+}
+
+
+
+/* ヘッダーメニュー */
+.menu{
+    display: flex;
+    height: 2rem;
+    margin: 0 auto;
+    width: 100%;
+    font-family: dazzle-unicase, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1em;
+}
+.menu > li {/*親階層のみ幅を25%にする*/
+    width: 20%;
+}
+/*全てのリスト・リンク共通*/
+.menu li {
+    list-style: none;
+    position: relative;
+}
+.menu li a {
+    display: block;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+
+}
+
+
+
+nav {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  bottom: 0;
+  width: 300px;
+  background: #ffffff;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: all .5s;
+  z-index: 3;
+  opacity: 0;
+}
+.open nav {
+  left: 0;
+  opacity: 1;
+}
+nav .inner {
+  padding: 25px;
+}
+nav .inner ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav .inner ul li {
+  position: relative;
+  margin: 0;
+  border-bottom: 1px solid #333;
+}
+nav .inner ul li a {
+  display: block;
+  color: #333;
+  font-size: 14px;
+  padding: 1em;
+  text-decoration: none;
+  transition-duration: 0.2s;
+}
+nav .inner ul li a:hover {
+  background: #e4e4e4;
+}
+@media screen and (max-width: 767px) {
+  nav {
+    left: -220px;
+    width: 220px;
+  }
+}
+/*============
+.toggle_btn
+=============*/
+.toggle_btn {
+  display: block;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  transition: all .5s;
+  cursor: pointer;
+  z-index: 3;
+}
+.toggle_btn span {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #333;
+  border-radius: 4px;
+  transition: all .5s;
+}
+.toggle_btn span:nth-child(1) {
+  top: 4px;
+}
+.toggle_btn span:nth-child(2) {
+  top: 14px;
+}
+.toggle_btn span:nth-child(3) {
+  bottom: 4px;
+}
+.open .toggle_btn span {
+  background-color: #fff;
+}
+.open .toggle_btn span:nth-child(1) {
+  -webkit-transform: translateY(10px) rotate(-315deg);
+  transform: translateY(10px) rotate(-315deg);
+}
+.open .toggle_btn span:nth-child(2) {
+  opacity: 0;
+}
+.open .toggle_btn span:nth-child(3) {
+  -webkit-transform: translateY(-10px) rotate(315deg);
+  transform: translateY(-10px) rotate(315deg);
+}
+/*============
+#mask
+=============*/
+#mask {
+  display: none;
+  transition: all .5s;
+}
+.open #mask {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .8;
+  z-index: 2;
+  cursor: pointer;
+}
+/*============
+main
+=============*/
+
+main h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+
+
+/* トップ */
+/* .top_pic img{
+  width: 50%;
+  height: auto;
+  margin:10% 10% ;
+} */
+
+
+.top_wrapper{
+  margin-top: 10%;
+  padding-top: 3%;
+  background-color: #fff;
+  border-radius: 6px;
+
+  /* list-style: none; */
+}
+
+.top_concept img{
+  width:50%;
+  height: auto;
+  /* float: left; */
+  /* position:absolute */
+  /* top: 50% */
+  /* transform: translateY(-50%) */
+  /* z-index: 2; */
+}
+
+.top_concept {
+  width:100%;
+  margin-left: -40px;
+  margin-right: auto;
+  display: flex;
+
+  /* float: left; */
+  /* position:relative; */
+}
+
+.top_concept p{
+  font-size: 1.5em!important;
+}
+/*
+.top_concept h2{
+  font-family: dazzle-unicase, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  float: left;
+  margin: 30% 15%;
+
+} */
+
+
+.top_concept p{
+  font-size: 0.6em;
+  /* margin-top:20%; */
+}
+
+
+
+/* メインラッパー */
+
+/* About */
+/* カギカッコ */
+.about img{
+  float: left;
+  margin-left: 5%;
+}
+
+.about_comment {
+    position: relative;
+    padding:0.25em 1em;
+    margin-top: 0.5%;
+    margin-left: 25%;
+    margin-right: 10%;
+    text-align: left;
+}
+.about_comment:before,.about_comment:after{
+    content:'';
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    display: inline-block;
+}
+.about_comment:before{
+    border-left: solid 1px #f2d16a;
+    border-top: solid 1px #f2d16a;
+    top:0;
+    left: 0;
+}
+.about_comment:after{
+    border-right: solid 1px #f2d16a;
+    border-bottom: solid 1px #f2d16a;
+    bottom:0;
+    right: 0;
+}
+.about_comment p {
+    margin: 0;
+    padding: 0;
+}
+
+/* マガジン */
+/* .magazine_pic img{
+  display: inline-block;
+  width: 15%;
+  height: auto;
+  margin:5% 1.5% ;
+  border-radius: 6px;
+  box-shadow:2px 2px 4px gray;
+} */
+/* クリック時に凹むようにするアニメーション */
+/* .magazine_pic img:active{
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+} */
+
+
+/* スライダー */
+.slider{
+    margin: 100px auto;
+    width: 50%;
+    /* margin-left: 20%; */
+}
+.slider img{
+	height: auto;
+	width: 70%;
+  padding:10% 5%;
+  /* margin-left: 20%; */
+}
+/*slick setting*/
+.slick-prev:before,
+.slick-next:before{
+color: #000;
+}
+
+
+/* ワーク */
+.works_pic img{
+  box-shadow:2px 2px 4px gray;
+  width: 70%;
+  height: auto;
+  border-radius: 6px;
+
+}
+/* クリック時に凹むようにするアニメーション */
+.works_pic img:active{
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+
+}
+
+
+
+/* サービス */
+.service_content{
+  padding: 0.5em 1em;
+  /* margin: 10% 10%; */
+  /* background: #fbf2d9;/*背景色*/ */
+  display:inline-block;
+  width:20%;
+  height:30%;
+  overflow-wrap:normal;
+  display:table-cell;
+  border: solid 1px #f2d16a;
+  border-radius: 6px;
+}
+
+.service_content p{
+  overflow-wrap: normal;
+　word-wrap: normal;
+}
+
+.service_wrapper{
+  display:table;
+}
+
+/* ワークフロー テーブルデザイン */
+table{
+  margin-top:10% ;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table th,td{
+  border-bottom: solid 1px #eee;
+}
+
+table td:hover{
+  background-color: #fbf2d9;
+  cursor: pointer;
+}
+
+table th,table td{
+  text-align: center;
+  width: 20%;
+  padding: 15px 0;
+  font-size: 0.8em;
+}
+
+
+/* コンタクトボタン */
+.contact_btn{
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #f2d16a;
+  color: #FFF;
+  border-radius: 3px;
+  box-shadow:2px 2px 4px gray;
+  margin-bottom: 10%;
+  width:20%;
+  font-size: 0.8em;
+}
+
+.contact_btn:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+
+/* フッター */
+
+footer{
+  text-align: center;
+  /* margin-bottom: 10%; */
+  margin-bottom: 0;
+  color:#fff;
+  margin: 0.5% 10%;
+  background-color: #f2d16a;
+  border-radius: 6px;
+}
+
+ul.flex-list{
+  display: flex;
+  justify-content: center;
+  font-size: 0.7em;
+  padding-top: 4%;
+}
+
+footer p{
+  font-size: 0.7em;
+  padding-bottom: 4%;
+}

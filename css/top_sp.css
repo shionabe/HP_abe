@@ -1,0 +1,10 @@
+
+/* タブレットじゃなくなったら */
+@media (max-width:767px) {
+
+.top_concept {
+  display:block!important;
+
+}
+
+}
